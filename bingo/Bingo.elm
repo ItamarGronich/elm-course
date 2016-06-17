@@ -3,4 +3,4 @@ module Bingo where
 import Html 
 
 main = 
-  Html.text "Hello, world"
+  Html.h1 [] [(Html.text "Hello, sami hori!!!")]
