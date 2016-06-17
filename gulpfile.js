@@ -10,7 +10,8 @@ gulp = require("gulp"),
 browserSync = require("browser-sync").create(),
 elm = require("gulp-elm"),
 rename = require("gulp-rename"),
-plumber = require("gulp-plumber");
+plumber = require("gulp-plumber"),
+fs = require("fs");
 
 /**
  * =====================
@@ -57,6 +58,18 @@ gulp.task('elm', ['elm-init'], function(){
   return gulp.src(sources.elm.main)
     .pipe(plumber())
     .pipe(elm({filetype: 'html'}))
+    .on('error', function(err) {
+        console.error("error in console" , err);
+        
+        browserSync.notify("Elm compile error", 5000);
+        
+        // Save the error to index.html, with a simple HTML wrapper
+        // so browserSync can inject itself in.
+        fs.writeFileSync(sources.dist + 'index.html', 
+        "<!DOCTYPE HTML><html><body><pre>" + 
+        err.message + 
+        "</pre></body></html>");
+    })
     .pipe(rename('index.html'))
     .pipe(gulp.dest(sources.dist));
 });
