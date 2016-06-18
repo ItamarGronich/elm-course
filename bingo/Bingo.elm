@@ -1,6 +1,15 @@
 module Bingo where
 
-import Html 
+import Html
+import String
 
-main = 
-  Html.h1 [] [(Html.text "Hello, Adi!!!")]
+title message times =
+  message ++ " "
+    |> String.toUpper
+    |> String.repeat times
+    |> String.trimRight
+    |> Html.text
+
+
+main =
+  title "Bingo" 3
