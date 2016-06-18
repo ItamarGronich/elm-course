@@ -16,6 +16,7 @@ first comes the argument to be processed through the chain and then the function
 ``` Elm
 "This is a String Value"
   |> String.toUpper -- the string value gets passed as an argument to the toUpper function
-  |> String.repeat 3 -- the specified number 3 is forced to be first argument and the returned value of the last function gets passed as second argument.
+-- the specified number 3 is forced to be first argument and the returned value of the last function gets passed as second argument.
+  |> String.repeat 3
   |> String.reverse
 ```
