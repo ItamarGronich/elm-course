@@ -23,7 +23,6 @@ pageFooter =
   footer []
     [ a [href "https://github.com/itamargronich"]
         [ text "My Github" ]
-
     ]
 
 view =
