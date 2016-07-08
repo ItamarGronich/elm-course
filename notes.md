@@ -11,44 +11,24 @@
 
 ### Defining functions:
 #### In Elm
-  ``` Elm
+``` Elm
 
 --Name Arguments = return value  
 foo a b c =
   a + b + c
-  ```
+```
 #### Is the same as this in JavaScript  
   ``` JavaScript
   function foo (a,b,c) {
     return a + b + c;
   }
   ```
-  ### Calling functions:
-  #### In Elm
+### Calling functions:
+#### In Elm
 ``` Elm
-double number =
-  number * 2
-
-triple number =
-  number * 3
-
-square number =
-  number * number
-
---Name Arguments (whitespace separated list)
-double 2  -- returns 4
-
---Chaining
-2
-  |> double
-  |> triple -- returns 12
-
-3
-  |> double -- 6
-  |> triple -- 18
-  |> square -- returns 324
+foo 2 4 8 -- returns 14
 ```
-  #### Is the same as this in JavaScript  
+#### Is the same as this in JavaScript  
 ``` JavaScript
     foo(2,4,8); // returns 14
 ```
@@ -64,3 +44,14 @@ first comes the argument to be processed through the chain and then the function
   |> String.repeat 3
   |> String.reverse
 ```
+
+## The Import System In Elm
+
+The import system in elm lets you import core and custom modules into the current namespace.
+every file in elm is a module and should start with defining it's name as so `module MyModule where`. br
+You can expose the module with the syntax `import ModuleName`.br
+This lets you access all the methods in that module using the dot notation like so: `MyModule.someFunction`. Alternatively you can expose certain function of that modules to exist directly on the namespace by adding this to the import line: `import ModuleName exposing (myFunction)`. This will give you access to `myFunction` from anywhere inside the module to which it was exposed.
+
+
+## Definitions
+In Elm Definitions like var/let are done so: `foo = "123"`. just like function definition. in fact you can think of it like a function that always returns the same value.
