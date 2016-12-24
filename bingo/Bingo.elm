@@ -1,32 +1,17 @@
-module Bingo where
+module Bingo exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (..)
-import String exposing (toUpper, repeat, trimRight)
+import Html exposing (h1,ul,li,p,text,body)
 
-title message times =
-  message ++ " "
-    |> toUpper
-    |> repeat times
-    |> trimRight
-    |> text
+-- Model
 
-greet name color food animal =
-  (name ++ "'s favorits are: " ++ (String.join " " [color, food, animal]))
-   |> Html.text
 
-pageHeader =
-    h1 [] [title "bingo!" 3]
 
-pageFooter =
-  footer []
-    [ a [href "https://github.com/itamargronich"]
-        [ text "My Github" ]
-    ]
+-- View
 
-view =
-  div [] [ pageHeader, pageFooter ]
+
+view : Model -> Html Msg
+view model =
+  body [] [ text toString model]
 
 main =
-  view
+    Html.program ({ init :  model, Platform.Cmd.Cmd msg ) ( , update : msg -> model ->  model, Platform.Cmd.Cmd msg ) , subscriptions : model Platform.Sub.Sub msg , view : model Html.Html msg }

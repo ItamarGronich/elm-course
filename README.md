@@ -1,1 +1,3 @@
-the app created with the elm course
+# Bingo elm app
+
+Created throughout the elm course.
