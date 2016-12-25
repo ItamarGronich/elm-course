@@ -81,11 +81,10 @@ gulp.task('copy-index', function(){
     .pipe(gulp.dest(sources.dist))
 });
 
-// gulp.task('styles', function(){
-//   return gulp.src(sources.styles + '**/*.*')
-//     .pipe();
-//     .pipe(gulp.dest(sources.dist))
-// });
+gulp.task('styles', function(){
+  return gulp.src(sources.styles + '*.css')
+    .pipe(gulp.dest(sources.dist))
+});
 
 //watch
 gulp.task('watch', function(){
@@ -104,6 +103,7 @@ gulp.task('watch', function(){
  gulp.task('compile-concat-compress', [
    'copy-index',
    'elm',
+   'styles'
  ]);
 
  gulp.task('default',
